@@ -1,5 +1,6 @@
-from django.core.management.base import BaseCommand, CommandParser
-from dataentry.models import Student
+from django.core.management.base import BaseCommand, CommandParser,CommandError
+# from dataentry.models import Student
+from django.apps import apps
 import csv
 
 class Command(BaseCommand):
@@ -14,16 +15,20 @@ class Command(BaseCommand):
         model_name = kwargs['model_name'].capitalize()
 
         model = None
+
+        for app_config in apps.get_app_configs():
+            try:
+                model = apps.get_model(app_config.label, model_name)
+                break
+            except LookupError:
+                continue
+
+        if not model:
+            raise CommandError(f"{model_name} error")
+
         with open(file_path, 'r') as file:
             reader = csv.DictReader(file)
 
             for row in reader:
-                Student.objects.create(**row)
-            #     roll_no = data['roll_no']
-            #     existing_record = Student.objects.filter(roll_no=roll_no).exists()    
-                
-            # if not existing_record:
-            #     Student.objects.create(**row)
-            # else:
-            #     self.stdout.write(self.style.WARNING(f'Student with roll no {roll_no}'))
+                model.objects.create(**row)           
         self.stdout.write(self.style.SUCCESS("Success"))
