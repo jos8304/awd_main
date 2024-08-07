@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandParser,CommandError
 from django.apps import apps
 import csv
+from django.db import DataError
 
 class Command(BaseCommand):
     help = "Import data from CVS file"
@@ -24,9 +25,16 @@ class Command(BaseCommand):
 
         if not model:
             raise CommandError(f"{model_name} error")
+        
+        model_fields = [field.name for field in model._meta.fields if field.name != 'id']
+        # print(model_fields)
 
         with open(file_path, 'r') as file:
             reader = csv.DictReader(file)
+            csv_header = reader.fieldnames
+
+            if csv_header != model_fields:
+                raise DataError(f'CSV do not match with {model_name}')
 
             for row in reader:
                 model.objects.create(**row)           

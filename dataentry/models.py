@@ -17,11 +17,11 @@ class Customer(models.Model):
         return self.customer_name
 
 class Tickets(models.Model):
+    t_id = models.AutoField(primary_key=True)
     ticket_id = models.CharField(max_length=20)
     status = models.CharField(max_length=20)
     station_id = models.CharField(max_length=20)
     sent_a_report_to_WMATA = models.CharField(max_length=20)
-    WMATA = models.CharField(max_length=20)
     mezzanine_id = models.CharField(max_length=20)
     mezzanine_name = models.CharField(max_length=20)
     incident_description = models.CharField(max_length=100)
@@ -47,4 +47,17 @@ class Tickets(models.Model):
 
 
     def __str__(self):
-        return self.ticket_id
+        return self.t_id
+
+class Employee(models.Model) :
+    employee_id = models.IntegerField()
+    employee_name = models. CharField(max_length=25)
+    designation = models.CharField(max_length=25)
+    salary = models.DecimalField(max_digits=10, decimal_places=2)
+    retirement = models.DecimalField(max_digits=10, decimal_places=2)
+    other_benefits = models.DecimalField(max_digits=10, decimal_places=2)
+    total_benefits = models.DecimalField(max_digits=10, decimal_places=2)
+    total_compensation = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    def __str__(self):
+        return self.employee_name+' - '+ self.designation
