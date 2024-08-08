@@ -135,3 +135,12 @@ MESSAGE_TAGS = {
 }
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
+
+#Email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER='jyou8304@gmail.com'
+EMAIL_HOST_PASSWORD='iurkydokauxknryj'
+EMAIL_USE_TLS=True
+DEFAULT_FROM_EMAIL = 'Automate with Django <jyou8304@gmail.com>'
+DEFAULT_TO_EMAIL = 'jos8304@hotmail.com'
