@@ -17,7 +17,6 @@ class Customer(models.Model):
         return self.customer_name
 
 class Tickets(models.Model):
-    t_id = models.AutoField(primary_key=True)
     ticket_id = models.CharField(max_length=20)
     status = models.CharField(max_length=20)
     station_id = models.CharField(max_length=20)
@@ -47,7 +46,7 @@ class Tickets(models.Model):
 
 
     def __str__(self):
-        return self.t_id
+        return self.ticket_id
 
 class Employee(models.Model) :
     employee_id = models.IntegerField()
