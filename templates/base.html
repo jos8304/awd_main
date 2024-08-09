@@ -19,8 +19,26 @@
     ></script>
     <!---->
     <script src="{% static 'js/custom.js' %}"></script>
+    <style>
+      .form-group {
+        padding: 15px !important;
+      }
+    </style>
   </head>
   <body>
+    <!-- As a link -->
+    <nav class="navbar navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">Automate With Django</a>
+        <div>
+          <a href="" class="float-rigth text-decoration-none text-dark"
+            >Login</a
+          >
+          /
+          <a href="" class="float-rigth btn btn-success">Register</a>
+        </div>
+      </div>
+    </nav>
     {% block content %} {% endblock %}
   </body>
 </html>
