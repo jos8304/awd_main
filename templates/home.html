@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container" style="padding: 50px">
+  {% if user.is_authenticated %}
   <h2 class="text-center">Automate The Boring Stuff With Django</h2>
   <div class="row pt-5">
     <!-- Import data -->
@@ -89,5 +90,6 @@
       </a>
     </div>
   </div>
+  {% endif %}
 </div>
 {% endblock %}

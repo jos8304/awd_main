@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% load crispy_forms_tags %}
-<div class="container mt-5" style="max-width: 600px">
+<div class="container mt-5 p-3 shadow rounded" style="max-width: 600px">
   <h2 class="text-center">Register</h2>
   <form action="{% url 'register' %}" method="POST">
     {% csrf_token %}
@@ -7,6 +7,7 @@
 
     <input type="submit" value="Register" class="btn btn-success" />
   </form>
+  {% include 'alerts.html' %}
 </div>
 
 {% endblock %}

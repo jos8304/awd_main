@@ -17,6 +17,8 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <!---->
     <script src="{% static 'js/custom.js' %}"></script>
     <style>
@@ -31,14 +33,24 @@
       <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">Automate With Django</a>
         <div>
-          <a href="" class="float-rigth text-decoration-none text-dark"
+          {% if user.is_authenticated %} Logged in as: {{ user }}
+          <a
+            href="{% url 'logout' %}"
+            class="float-rigth btn btn-outline-danger"
+            >Logout</a
+          >
+
+          {% else %}
+          <a
+            href="{% url 'login' %}"
+            class="float-rigth text-decoration-none text-dark"
             >Login</a
           >
-          /
           <a href="{% url 'register' %}" class="float-rigth btn btn-success"
             >Register</a
           >
         </div>
+        {% endif %}
       </div>
     </nav>
     {% block content %} {% endblock %}
