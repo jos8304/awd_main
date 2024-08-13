@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'uploads',
     'crispy_forms',
     'crispy_bootstrap5',
+    'emails',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -145,10 +147,17 @@ CELERY_BROKER_URL = 'redis://localhost:6379'
 #Email
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER='jyou8304@gmail.com'
-EMAIL_HOST_PASSWORD='iurkydokauxknryj'
+EMAIL_HOST_USER='ukc2025@gmail.com'
+EMAIL_HOST_PASSWORD='evndoxeealrzrclc'
 EMAIL_USE_TLS=True
-DEFAULT_FROM_EMAIL = 'Automate with Django <jyou8304@gmail.com>'
-DEFAULT_TO_EMAIL = 'jos8304@hotmail.com'
+DEFAULT_FROM_EMAIL = 'Helpdesk Nexien <helpdesk@nexien.com>'
+DEFAULT_TO_EMAIL = 'ukc2025@gmail.com'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+CKEDITOR_CONFIGS = {
+    'default': {        
+        'height': 300,
+        'width': '100%',
+    },
+}
