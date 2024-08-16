@@ -33,7 +33,8 @@ def check_csv_errors(file_path, model_name):
         with open(file_path, 'r') as file:
             reader = csv.DictReader(file)
             csv_header = reader.fieldnames
-            
+            print(csv_header)
+            print(model_fields)
             if csv_header != model_fields:
                 raise DataError(f'CSV do not match with {model_name}')
     except Exception as e:

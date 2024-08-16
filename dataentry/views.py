@@ -27,7 +27,7 @@ def import_data(request):
             messages.error(request, str(e))
             return redirect('import_data')
         
-        import_data_task.delay(model_name)
+        import_data_task.delay(file_path, model_name)
 
         messages.success(request, 'Your data is being imported, you will be notified once it is done.')
 

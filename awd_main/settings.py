@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'emails',
     'ckeditor',
+    'stockanalysis',
+    'dal',
+    'dal_select2',
 ]
 
 MIDDLEWARE = [

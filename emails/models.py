@@ -25,3 +25,13 @@ class Email(models.Model):
     def __str__(self):
         return self.subject
 
+
+class EmailTracking(models.Model):
+    email = models.ForeignKey(Email, on_delete=models.CASCADE, null=True, blank=True)
+    report = models.ForeignKey(Report, on_delete=models.CASCADE, null=True, blank=True)
+    unique_id = models.CharField(max_length=255, unique=True)
+    opened_at = models.DateTimeField(null=True, blank=True)
+    clicked_at = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return self.email.subject
